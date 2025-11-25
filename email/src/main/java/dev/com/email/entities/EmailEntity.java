@@ -22,6 +22,7 @@ public class EmailEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "email_id")
     private UUID emailId;
+    @Column(name = "user_id")
     private UUID userId;
     @Column(name = "email_from")
     private String emailFrom;

@@ -6,8 +6,10 @@ import java.util.UUID;
 
 @Builder
 public record EmailResponse(
-        UUID id,
-        String subject,
+        UUID userId,
+        String emailFrom,
+        String emailTo,
+        String emailSubject,
         String body
 ) {
 }
