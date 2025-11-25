@@ -10,7 +10,7 @@ public record EmailResponse(
         String emailFrom,
         String emailTo,
         String emailSubject,
-        String body
+        String emailBody
 ) {
 }
 
