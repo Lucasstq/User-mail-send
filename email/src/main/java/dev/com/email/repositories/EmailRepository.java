@@ -1,4 +1,4 @@
-package dev.com.email.repository;
+package dev.com.email.repositories;
 
 import dev.com.email.entities.EmailEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
