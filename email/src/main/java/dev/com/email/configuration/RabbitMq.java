@@ -36,9 +36,9 @@ public class RabbitMq {
     @Bean
     public Binding binding() {
         return  BindingBuilder
-                .bind(queue())  //vincular a essa fila
-                .to(exchange()) //para essa exchange
-                .with(BINDING_KEY); //usando essa rota
+                .bind(queue())
+                .to(exchange())
+                .with(BINDING_KEY);
     }
 
 }
