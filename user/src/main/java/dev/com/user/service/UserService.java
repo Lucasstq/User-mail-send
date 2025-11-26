@@ -17,9 +17,6 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserProducer userProducer;
 
-    /*
-    var é apenas uma variavel que corresponde ao que minha atribuição está.
-     */
     @Transactional
     public UserEntity saveAndPublish(UserEntity user) {
         var userEntity = userRepository.save(user);

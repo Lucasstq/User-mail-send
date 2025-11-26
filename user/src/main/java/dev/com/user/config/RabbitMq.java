@@ -9,10 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMq {
 
-    /*
-    A exchange é um roteador: ela não guarda mensagens;
-    ela recebe e decide para qual(s) fila(s) repassar a mensagem.
-     */
     public static final String EXCHANGE_NAME = "user_created";
 
     @Bean
@@ -22,7 +18,7 @@ public class RabbitMq {
 
     @Bean
     public Jackson2JsonMessageConverter messageConverter() {
-        ObjectMapper objectMapper = new ObjectMapper(); //consome Json como Objeto
+        ObjectMapper objectMapper = new ObjectMapper();
         return new Jackson2JsonMessageConverter(objectMapper);
     }
 
