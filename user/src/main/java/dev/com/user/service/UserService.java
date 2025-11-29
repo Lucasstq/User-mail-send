@@ -1,5 +1,6 @@
 package dev.com.user.service;
 
+import dev.com.user.dtos.request.UserUpdateRequest;
 import dev.com.user.entities.UserEntity;
 import dev.com.user.producer.UserProducer;
 import dev.com.user.repositories.UserRepository;
@@ -28,9 +29,21 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Transactional
+    public UserEntity updateUser(UUID id, UserUpdateRequest request) {
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        if (user.getName() != null) {
+            user.setName(request.name());
+        }
+        return userRepository.save(user);
+    }
+
     public void deleteUser(UUID id) {
-        userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        userRepository.deleteById(id);
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        userRepository.delete(user);
     }
 
 }
