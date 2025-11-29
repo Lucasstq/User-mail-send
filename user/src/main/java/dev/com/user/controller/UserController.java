@@ -1,6 +1,7 @@
 package dev.com.user.controller;
 
 import dev.com.user.dtos.request.UserRequest;
+import dev.com.user.dtos.request.UserUpdateRequest;
 import dev.com.user.dtos.response.UserResponse;
 import dev.com.user.entities.UserEntity;
 import dev.com.user.mapper.UserMapper;
@@ -36,5 +37,13 @@ public class UserController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(users);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id,
+                                                   @Valid @RequestBody UserUpdateRequest request) {
+        UserEntity updatedUser = userService.updateUser(id, request);
+        return ResponseEntity.ok(UserMapper.toResponse(updatedUser));
+    }
+
 
 }
