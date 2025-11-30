@@ -10,6 +10,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class EmailService {
@@ -30,6 +32,7 @@ public class EmailService {
             message.setText(entity.getEmailBody());
             mailSender.send(message);
             entity.setStatusEmail(EmailStatus.SENT);
+            entity.setSendDateEmail(LocalDateTime.now());
         } catch (Exception e) {
             entity.setStatusEmail(EmailStatus.FAILED);
             System.out.println("Error sending email: " + e.getMessage());
