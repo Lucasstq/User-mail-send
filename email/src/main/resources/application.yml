@@ -16,9 +16,22 @@ spring:
 
   rabbitmq:
     addresses: amqps://jaragua.lmq.cloudamqp.com
-    username: lvngqwje
-    password: SvWvCzvjOV5PcVYu7uqRUi2wVeN3NtrS
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
     virtual-host: lvngqwje
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 server:
   port: 8080
