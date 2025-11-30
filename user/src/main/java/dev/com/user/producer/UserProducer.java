@@ -20,7 +20,7 @@ public class UserProducer {
         emailResponse.setUserId(user.getUserId());
         emailResponse.setEmailTo(user.getEmail());
         emailResponse.setEmailSubject("Assunto do email: ");
-        emailResponse.setEmailBody("Whello, " + user.getName() + " bem vindo a plataforma.");
+        emailResponse.setEmailBody("Olá, " + user.getName() + " bem vindo a plataforma.");
         template.convertAndSend(RabbitMq.EXCHANGE_NAME, "email.key", emailResponse);
     }
 
