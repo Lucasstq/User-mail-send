@@ -19,7 +19,7 @@ public class EmailService {
     private final JavaMailSender mailSender;
     private final EmailRepository emailRepository;
 
-    @Value("${EMAIL_USERNAME}")
+    @Value("${spring.mail.username}")
     private String emailFrom;
 
     @Transactional
@@ -33,6 +33,7 @@ public class EmailService {
             mailSender.send(message);
             entity.setStatusEmail(EmailStatus.SENT);
             entity.setSendDateEmail(LocalDateTime.now());
+            entity.setEmailFrom(emailFrom);
         } catch (Exception e) {
             entity.setStatusEmail(EmailStatus.FAILED);
             System.out.println("Error sending email: " + e.getMessage());
