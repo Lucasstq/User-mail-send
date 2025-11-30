@@ -30,7 +30,7 @@ public class EmailEntity {
     private String emailTo;
     @Column(name = "email_subject")
     private String emailSubject;
-    @Column(name = "email_body", columnDefinition = "BODY")
+    @Column(name = "email_body", columnDefinition = "TEXT")
     private String emailBody;
     @Column(name = "send_date_email")
     private LocalDateTime sendDateEmail;
